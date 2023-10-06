@@ -1,0 +1,72 @@
+{% extends "WebApp/app_base.html" %}
+
+{% block content %}
+<style>
+	.panel-heading{
+		color:black;
+	}
+	
+	.panel-body{
+		background-color: white;
+		border-radius: 10px;
+	}
+
+	ul{
+        list-style-type: decimal;
+    }
+</style>
+<div class="container pt-3">
+	<div class="panel panel-default">
+		<div class="panel-heading"><h5>Publications:</h5></div>
+		<div class="panel-body" >
+			<ul id="papers">
+
+			</ul>
+		<!-- {% for paper in allPapers %}
+			<li>
+				{{paper.authors}} ({{paper.year}}) "{{paper.title}}", <i>{{paper.journal}}</i>, 
+				{{paper.volume}}{% if paper.issue != None %}({% endif %}{{paper.issue|default_if_none:""}}{% if paper.issue != None %}){% endif %}: {{paper.pages}}. <a href={{paper.DOI}} target="_blank">DOI</a>
+			</li>
+		{% endfor %} -->
+		</div>
+	</div>
+</div>
+
+<script>
+const papersContainerElemenet = document.getElementById("papers");
+loadPapers(papersContainerElemenet);
+
+function loadPapers(papersElement) {
+	const xhr = new XMLHttpRequest();
+	const method = 'GET';
+	const url = "/api/list/";
+	const responseType = "json";
+	xhr.responseType = responseType;
+	xhr.open(method, url);
+	xhr.onload = function() {
+		const serverResponse = xhr.response;
+		var paperObjList = serverResponse;
+		console.log(paperObjList)
+		var finalPaperStr = "";
+		for(let i = 0; i < paperObjList.length; i++) {
+			var currentItem = formatPaperElement(paperObjList[i]);
+			finalPaperStr += currentItem;
+		}
+		papersElement.innerHTML += finalPaperStr;
+	}
+	xhr.send()
+}
+	
+function formatPaperElement(paper) {
+	paper.issue = paper.issue == null ? "" : paper.issue
+	paper.volume = paper.volume == null ? "None" : paper.volume
+	paper.DOI = paper.DOI == null ? '#' : paper.DOI
+
+	var formattedPaper = "<div class='col-12 col-md-12 mx-auto py-2 mb-2 paper' id='paper - " + paper.id + "'><li>" + paper.authors + " (" + paper.year + ") \"" + paper.title + "\", <i>" + paper.journal + "</i>, " + paper.volume + " " + paper.issue + ": " + paper.pages + ". <a href=" + paper.DOI + " target='_blank'>DOI</a></li></div>"
+	
+	return formattedPaper
+}
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "WebApp/app_base.html" %}
+{% load static %}
+{% block title %}SERVIR AppTemplate - About{% endblock %}
+{% block script %}
+    <!-- Custom styles-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!-- Custom scripts-->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        .custom-file-upload {
+            background-color: #0074cc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            display: inline-block;
+        }
+        button[type="submit"] {
+            background-color: #0074cc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            display: inline-block;
+        }
+        textarea {
+            height: 100px; /* Set your desired height */
+            resize: vertical; /* Allow vertical resizing */
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+<body>
+    <h1>Upload Projects</h1>
+    <form method="post" enctype="multipart/form-data">
+        <div style="text-align: right;">
+            <a href="{% url 'projects' %}" id="projectsLink">Go back to Projects</a>
+        </div>
+        <br>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload Project</button>
+    </form>
+</body>
+{% endblock %}

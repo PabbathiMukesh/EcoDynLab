@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#3a3b45;">
+<head>
+    {% load static %}
+    {% load socialaccount %}
+    {% load i18n %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Custom fonts-->
+    <link href="{% static '/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="icon" href="{% static '/images/logo.png' %}" type="image/png">
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+    <title>{% block title %}SERVIR AppTemplate{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link href="{% static '/css/basic.css' %}" rel="stylesheet">
+    <link href="{% static '/css/base.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/css/common.css' %}" rel="stylesheet" type="text/css">
+    <style>
+        /* Default styles for the body with horizontal margin */
+        body {
+            margin: 0px 200px !important;
+        }
+
+        /* #sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000; 
+            z-index: 1000;
+        } */
+        #sticky-header{
+            margin-left: 200px !important;
+            margin-right: 200px !important;
+        }
+        
+        /* Add padding to the content to prevent it from being hidden under the sticky header */
+
+        /* Media query for screens with a maximum width of 767px (typical for mobile screens) */
+        @media (max-width: 1000px) {
+            body {
+                margin: 0; /* Remove horizontal margin on mobile screens */
+            }
+        }
+    </style>
+    {% block script %}{% endblock %}
+</head>
+<body id="page-top">
+<div id="wrapper">
+    <div id="content-wrapper" class="d-flex flex-column" >
+        <!-- Main Content -->
+        <div id="content" class="bg-gray-300" >
+            <!-- Header logos -->
+            <!-- Change src of <img> tag in order to change the header logo images -->
+            <div id="sticky-header" class="fixed-top">
+                <nav class="" style="background-color:white;">
+                    <div class="container-fluid" style="padding-left:0px;">
+                        <img
+                                        src="{% static "images/logos/Ecodynlab_Long_fade.png" %}"
+
+                                        height="50"
+                                        alt="USAID_seal_fullname_surrounding_USAID_shield_with_handclasp_USAID_blue_red_on_right_with_FromTheAmericanPeople_tagline">
+                    </div>
+                </nav>
+                  
+                <nav class="navbar navbar-expand-lg navbar-dark" id="navbar_app_base">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="{% url 'about' %}" id="title_navbar">EcoDynLab</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto float-right" id="ul_navbar" style="margin-left:5%;">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'about' %}">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'people' %}">People</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'projects' %}">Projects</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'papers' %}">Papers</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="{% url 'products' %}">Products</a>
+                                </li>                          
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'pictures' %}">Pictures</a>
+                                </li>
+                                <!-- <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'setup' %}">Setup</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'feedback' %}">Feedback</a>
+                                </li> -->
+                                <li class="nav-item dropdown">
+                                    <!-- Nav Item - User Information -->
+                                    {% if user.is_authenticated %}
+                                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                                           data-bs-toggle="dropdown">{{ user.username }} </a>
+                                        <ul class="dropdown-menu" id="details" style="margin-top: 3vh">
+                                            <li><a class="dropdown-item"
+                                                   href="{% url 'account_logout' %}?next={{ request.path }}">Log
+                                                Out</a></li>
+                                        </ul>
+                                    {% else %}
+                                        <!-- <a class="nav-link"
+                                           href="{% provider_login_url 'google' %}?next={{ request.path }}">
+                                            Login
+                                        </a> -->
+                                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                                    {% endif %}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Navigation bar -->
+                <!-- To update any of the navigation bar items, please edit the content of <li> tags below -->
+                
+            </div>
+            <div style="padding-top: 100px;">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+<div class="d-flex flex-column">
+    <footer id="footer">
+        <div class="app-copy">
+            <a href="{% url 'contactus' %}">Contact Us </a>
+        </div>
+        <div class="ml-auto app-power">
+            <a href="{% url 'legal' %}" style="color:white">Copyright © 2023</a>
+        </div>
+
+    </footer>
+</div>
+</body>
+</html>
+
+<script>
+$(document).ready(function () {
+    $('.dropdown-toggle').on('click', function (e) {
+        e.preventDefault(); // Prevent the default link behavior
+        var dropdownMenu = $(this).next('#details .dropdown-menu');
+        dropdownMenu.toggleClass('show');
+    });
+    // Close dropdowns when clicking outside
+    $(document).on('click', function (e) {
+        if (!$('.navbar-nav').is(e.target) && $('.navbar-nav').has(e.target).length === 0) {
+            $('.dropdown-menu').removeClass('show');
+        }
+    });
+});
+
+</script>  

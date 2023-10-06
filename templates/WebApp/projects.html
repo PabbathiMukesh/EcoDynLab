@@ -1,0 +1,57 @@
+{% extends "WebApp/app_base.html" %}
+{% load static %}
+{% block title %}SERVIR AppTemplate - About{% endblock %}
+{% block script %}
+    <!-- Custom styles-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="{% static 'css/projects.css' %}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom scripts-->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <style>
+        .accordion-button{
+            border-radius: 10px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="accordion" id="project-accordion">
+    {% for project in projects %}
+    <div class="card">
+        <div class="card-header" id="heading{{ project.id }}">
+            <h2 class="mb-0">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ project.id }}">
+                    <div class="d-flex align-items-center">
+                        <img src="{{ project.agency.logo.url }}" alt="{{ project.agency.name }} Logo" width="50" style="margin-right: 10px;">
+                        <span style="width: 100px;">{{ project.period }}</span>
+                    </div>
+                    <span>{{ project.name }}</span>
+                </button>
+                
+            </h2>
+        </div>
+        <div id="collapse{{ project.id }}" class="collapse" data-bs-parent="#project-accordion">
+            <div class="card-body">
+                {{ project.abstract }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+
+    });
+</script>
+{% endblock %}
+

@@ -1,0 +1,68 @@
+{% extends "WebApp/app_base.html" %}
+{% load static %}
+{% block title %}SERVIR AppTemplate - About{% endblock %}
+{% block script %}
+    <!-- Custom styles-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link href="{% static '/css/people.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Custom scripts-->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+{% endblock %}
+
+{% block content %}
+<style>
+    header {
+    background-image: url('{% static "images/team.jpg" %}'); /* #d2d1a0 #303044 */
+}
+</style>
+    <header>
+        <h1>Our Amazing Team</h1>
+    </header>
+    <div class="team-description">
+        <h1>About Us</h1>
+        <div class="description-container">
+            <h2>
+                We are a dedicated team of professionals who work together to turn ideas into reality, delivering innovative solutions with passion and precision.
+            </h2>
+        </div>
+    </div>
+    <div class="container">
+        <h3 style="text-align:center">Current and past EcoDyners</h3>
+        <style>
+            .team-members {
+                list-style: none;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap;
+            }
+        
+            .person {
+                width: calc(16.666% - 20px); /* Set the width to approximately 16.666% (100% / 6) */
+                margin: 10px; /* Adjust margin for spacing */
+                box-sizing: border-box;
+                text-align: center; /* Center the content */
+            }
+        </style>
+        
+        <ul class="team-members">
+            {% for member in team_members %}
+            <li class="person">
+                <img src="{% static 'images/teammembers/Person1.png' %}" alt="{{ member.name }}" style="padding: 0;">
+                <div class="person-details" style="padding: 20px;">
+                    <h2>{{ member.name }}</h2>
+                    <p>{{ member.title }}</p>
+                </div>
+            </li>
+            {% if forloop.counter|divisibleby:6 %}
+                </ul><ul class="team-members">
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <br>
+    </div>
+{% endblock %}

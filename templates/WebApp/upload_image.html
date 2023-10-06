@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+{% extends "WebApp/app_base.html" %}
+{% load static %}
+{% block title %}SERVIR AppTemplate - About{% endblock %}
+{% block script %}
+    <!-- Custom styles-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link href="{% static '/css/pictures.css' %}" rel="stylesheet" type="text/css">
+    <!-- Custom scripts-->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="{% static 'js/about.js' %}"></script>
+    <!-- Include select2 CSS and JavaScript -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+    <!-- Add jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Add Select2 CSS and JavaScript -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.3.2/select2.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.3.2/select2.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        .custom-file-upload {
+            background-color: #0074cc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            display: inline-block;
+        }
+        button[type="submit"] {
+            background-color: #0074cc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            display: inline-block;
+        }
+        textarea {
+            height: 100px; /* Set your desired height */
+            width:300px;
+            resize: vertical; /* Allow vertical resizing */
+        }
+        .select2-input{
+            width:100px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<body>
+    <h1>Upload Image</h1>
+    <form method="post" enctype="multipart/form-data">
+        <div style="text-align: right;">
+            <a href="{% url 'pictures' %}" id="picturesLink">Go back to Pictures</a>
+        </div>
+        <div style="text-align: right;">
+            <a data-toggle="modal" data-target="#folderModal">Create New Folder</a>
+        </div>
+        <br>
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+
+    <!-- Folder creation modal -->
+    <div class="modal fade" id="folderModal" tabindex="-1" role="dialog" aria-labelledby="folderModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="folderModalLabel">Create New Folder</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Folder creation form -->
+                    <form method="post" id="folderCreationForm">
+                        {% csrf_token %}
+                        {{ folder_form.as_p }}
+                        <button type="submit" class="btn btn-primary">Create Folder</button>
+                        <label for="errormessage" value='{{i}}' id='x' style="color:red"> {{i}}</label>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        // Submit the folder creation form via AJAX
+        $("#folderCreationForm").submit(function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "{% url 'create_folder' %}",
+                data: $(this).serialize(),
+                success: function (data) {
+                    debugger
+                    // Close the modal after successful creation
+                    if (data.success === true) {
+                        // Folder creation was successful, close the modal
+                        $("#folderModal .close").trigger("click");
+                    } else {
+                        $("#x").text(data.error_message);
+                    }
+                }
+            });
+        });
+        $('#folderModal').on('show.bs.modal', function () {
+            // Reset form fields when the modal is about to be shown
+            $('#folderCreationForm')[0].reset();
+            $("#x").text("");
+        });
+
+        // Listen for the modal hidden event
+        $('#folderModal').on('hidden.bs.modal', function () {
+            // Reset form fields when the modal is hidden (closed)
+            $('#folderCreationForm')[0].reset();
+            $("#x").text("");
+        });
+    });
+</script>
+
+{% endblock %}
+

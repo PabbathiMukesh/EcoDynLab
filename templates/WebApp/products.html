@@ -1,0 +1,112 @@
+{% extends "WebApp/app_base.html" %}
+{% load static %}
+{% block script %}
+    <!-- Custom styles-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!-- Custom scripts-->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <style> 
+        /* Style for the div */
+        .custom-div {
+            border: 1px solid rgb(223, 212, 212);
+            border-radius: 5px;
+            padding: 10px;
+            transition: background-color 0.3s; /* Add a smooth transition for the background color */
+            margin: 10px;
+        }
+    
+        /* Style for the link */
+        a {
+            text-decoration: none; /* Remove underlines from links */
+            color: #333; /* Set the link color to a normal color */
+        }
+    
+        /* Hover effect for the div */
+        .custom-div:hover {
+            background-color: #f0f0f0; /* Change the background color on hover */
+        }
+    </style>
+
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-gray-300" style="padding-top:1.5rem">
+    <h2>Products Title</h2>
+    <div class="accordion">
+        <div class="accordion-item mb-2">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Decision Support Systems
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <a href="#">
+                    <div class="custom-div">
+                        Link 1
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="accordion" >
+        <div class="accordion-item mb-2">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Data
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <a href="#">
+                    <div class="custom-div">
+                        Link 1
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="accordion">
+        <div class="accordion-item mb-2">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Instrumentation
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <a href="#">
+                    <div class="custom-div">
+                        SCICLOpS: Heavy-lift hyperspectral+LiDAR UAS
+                    </div>
+                </a>
+                    <a href="#">
+                    <div class="custom-div">
+                        SPOT: Scanning Plant IoT Facility
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="custom-div">
+                        HexaGator: Open-source hexarotor UAV
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="custom-div">
+                        GatorScan: Automated tree bole estimation and mapping
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="custom-div">
+                        GatorSpec: UV Absorption spectrometer for water quality
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function() {
+        // Initialize the accordion
+        $('#productsAccordion').collapse();
+    });
+</script>
+{% endblock %}

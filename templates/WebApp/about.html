@@ -1,0 +1,104 @@
+{% extends "WebApp/app_base.html" %}
+{% load static %}
+{% block title %}SERVIR AppTemplate - About{% endblock %}
+{% block script %}
+    <!-- Custom styles-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link href="{% static '/css/about.css' %}" rel="stylesheet" type="text/css">
+    <!-- Custom scripts-->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="{% static 'js/about.js' %}"></script>
+
+<!-- Add Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        /* CSS to restrict the image size in the carousel */
+        .carousel-inner img {
+            max-width: 100%; /* Set a maximum width for the images */
+            max-height: 500px; /* Set a maximum height for the images */
+            margin: 0 auto; /* Center the images horizontally */
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <!-- Root container for the about page's content -->
+    <div id="carouselExample" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            {% for image in images %}
+            <li data-target="#carouselExample" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+            {% endfor %}
+        </ol>
+        <div class="carousel-inner">
+            {% for image in images %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <img src="{{ image.image.url }}" class="d-block w-100" alt="{{ image.title }}">
+                <div class="carousel-caption d-none d-md-block">
+                    <!-- <h5>{{ image.title }}</h5>
+                    {% if image.description %}
+                    <p>{{ image.description }}</p> -->
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <br/>
+    <div class="container-fluid  bg-gray-300">
+        <!-- About -->
+        <!-- Update the text inside <p> tags in order to update the about text -->
+        <div class="row">
+            <div class="col-lg-12 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">The Ecosystem Dynamics Laboratory</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-left text-dark">
+                            <p>
+                                Research conducted in the EcodynLab incorporates field work and modeling geared towards understanding the 
+                                impacts of land management and environmental change on the provisioning of ecosystems goods and services – 
+                                more specifically carbon sequestration, crop production, water quality, wildlife habitat provision, and urban climate regulation. ​
+                                We develop of novel instrumentation and quantitative techniques to leverage measurements from leaf-level, canopy-level and 
+                                landscape-scale satellite, airborne, and unmanned aerial system (UAS)-borne spectroscopic imagery and LiDAR to assess forest 
+                                and crop canopy structure, biochemistry, and function. We use these measurements to assess crop and forest health, to 
+                                detect stress in pest and pathogen-affected plants, and to detect effects of water and thermal stress on photosynthetic potential 
+                                of tree species and agricultural crops. The focus of our research is to use this information to drive mechanistic ecophysiology 
+                                models to predict spatio­temporal differences in plant productivity. We also develop novel instrumentation and a broad spectrum of 
+                                analytical methods spanning statistical, machine learning, and deep learning-based approaches.​
+                                We are broadly supported by NASA, USDA, NSF, and DOE funds in addition to funding from the state of Florida and internal grants 
+                                from the university. These projects span topics such as plant phenotyping, mapping of forest canopy biochemistry, structure, and 
+                                function using hyperspectral imagery, invasive species control, the use of energy crops in improving ecosystem service delivery, 
+                                and international research in food insecurity and causes and consequences of land degradation. ​
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card shadow m-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Support From</h6>
+                </div>
+                <div class="card-body text-center">
+                    {% for agency in agencies %}
+                    <a href="" class="p-3"><img class="org-logo"  src="{{ agency.logo.url }}" alt="{{ agency.name }}"></a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

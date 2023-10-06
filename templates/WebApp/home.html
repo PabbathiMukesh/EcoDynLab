@@ -1,0 +1,92 @@
+{% extends "WebApp/app_base.html" %}
+{% load static %}
+
+{% block title %}SERVIR AppTemplate - Home{% endblock %}
+{% block script %}
+    <!-- Custom styles-->
+<!-- Add jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Add Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+    /* CSS to restrict the image size in the carousel */
+    .carousel-inner img {
+        max-width: 100%; /* Set a maximum width for the images */
+        max-height: 500px; /* Set a maximum height for the images */
+        margin: 0 auto; /* Center the images horizontally */
+    }
+</style>
+    <!-- Custom scripts-->
+{% endblock %}
+
+<!-- Begin Page Content -->
+{% block content %}
+        <div id="carouselExample" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                {% for image in images %}
+                <li data-target="#carouselExample" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+                {% endfor %}
+            </ol>
+            <div class="carousel-inner">
+                {% for image in images %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img src="{{ image.image.url }}" class="d-block w-100" alt="{{ image.title }}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>{{ image.title }}</h5>
+                        {% if image.description %}
+                        <p>{{ image.description }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <!-- Search bar -->
+        <!-- Search results are based on the title on the cards shown -->
+        <div class="container-fluid">
+            <div class="mt-4 form-outline">
+                <input type="search" id="searchBox" class="form-control" placeholder="Search for the app here..."
+                       aria-label="Search"/>
+            </div>
+
+            <!-- Application Template Cards -->
+            <!-- Looping through the list of cards to generate the interface that contains all the cards. This list can be updated in views.py -->
+            <div class="row flex_cards">
+
+                {% for app_card in app_cards %}
+
+                    <div class="app-card mb-4">
+                        <br>
+                        <div class="card shadow mb-4 mr-4 h-100 img-thumbnail">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">{{ app_card.name }}</h6>
+                            </div>
+                            <div class="card-body card_bg"
+                                 style="background-image: url('{{ app_card.background_image_url }}')">
+                                <div class="text-center">
+                                    <a href='{{ app_card.url }}' class="stretched-link"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <br>
+        </div>
+    </div>
+    <!-- End of Main Content -->
+
+    <script src="{% static '/js/home.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    {% include 'WebApp/home_about.html' %}
+{% endblock %}

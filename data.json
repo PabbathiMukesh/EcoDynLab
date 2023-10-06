@@ -1,0 +1,9 @@
+{
+    "SECRET_KEY": "test",
+    "ALLOWED_HOSTS": ["*"],
+    "CSRF_TRUSTED_ORIGINS": ["http://localhost:8000","http://127.0.0.1:8000"],
+    "private_key_json" : "/Users/mukeshpabbathi/AppTemplate2022/client_secret_876819047420-mvk3p4ciep8mm25o4j16o4rvheho860g.apps.googleusercontent.com.json",
+    "DATA_DIR" : "/Users/mukeshpabbathi/AppTemplate2022/geos/20191123.nc",
+    "service_account" : "mukeshpabbathiearth@mukesh-pabbathi.iam.gserviceaccount.com",
+    "sample_netCDF": "https://thredds.servirglobal.net/thredds/fileServer/mk_aqx/geos/20191123.nc"
+  }

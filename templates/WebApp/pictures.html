@@ -1,0 +1,103 @@
+{% extends "WebApp/app_base.html" %}
+{% load static %}
+{% block title %}SERVIR AppTemplate - About{% endblock %}
+{% block script %}
+    <!-- Custom styles-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link href="{% static '/css/pictures.css' %}" rel="stylesheet" type="text/css">
+    <!-- Custom scripts-->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        /* Custom styles for Album button */
+        .album-button {
+            background-color: white;
+            border: 2px solid #007bff;
+            color: #007bff;
+            width: 100%;
+        }
+        .fixed-buttons {
+            position: sticky;
+            top: 1.5rem; /* Adjust the top position as needed */
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-gray-300" style="padding-top: 1.5rem;">
+    <div class="row">
+        <!-- Left Column (Album Button, Album Buttons, and Upload Button) -->
+        <div class="col-lg-2 fixed-buttons">
+            <div class="mb-3">
+                <!-- Album Button with custom style -->
+                <button class="btn album-button" type="button" data-bs-toggle="collapse" data-bs-target="#albumButtons">
+                    Album
+                </button>
+            </div>
+
+            <!-- Album Buttons (Collapsed by default) -->
+            <div class="collapse mb-3" id="albumButtons">
+                <div class="list-group">
+                    {% for fold in folder %}
+                        <a class="list-group-item list-group-item-action folder-item" data-folder="{{ fold.name }}">{{ fold.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <!-- Upload Button -->
+                <a href="{% url 'upload_image' %}" style="width: 100%;" class="btn btn-primary upload-link" type="button">
+                    Upload
+                </a>
+            </div>
+        </div>
+
+        <!-- Right Column (Pictures) -->
+        <div class="col-lg-10">
+            <!-- Images Section -->
+            <div class="masonry-grid">
+                {% for image in images %}
+                    <div class="masonry-item">
+                        <img src="{{ image.image.url }}" alt="{{ image.title }}">
+                        <div class="image-info">
+                            <h5 class="image-title">{{ image.title }}</h5>
+                            <p class="image-description">{{ image.description }}</p>
+                            <label class="folderimage" hidden>{{image.foldername}}</label>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('.masonry-item').hide();
+        $('.masonry-item').each(function() {
+            debugger
+            var foldername = $(this).find('.folderimage').text();
+            if (foldername === 'Carousel') {
+                $(this).show();
+            }
+        });
+
+        // Handle album click event
+        $('.folder-item').click(function() {
+            var selectedFolder = $(this).data('folder');
+
+            // Hide all images
+            $('.masonry-item').hide();
+
+            // Show images with the selected album
+            $('.masonry-item').each(function() {
+                var foldername = $(this).find('.folderimage').text();
+                if (foldername === selectedFolder) {
+                    $(this).show();
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

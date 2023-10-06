@@ -1,0 +1,68 @@
+li{
+    text-decoration: none;
+}
+
+.masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust as needed */
+    grid-gap: 20px; /* Adjust spacing between items */
+}
+
+.masonry-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.masonry-item img {
+    width: 100%;
+    min-height: 30vh;
+    max-height: 30vh;
+    display: block;
+}
+
+.image-info {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.masonry-item:hover .image-info {
+    opacity: 1;
+}
+
+.image-title {
+    font-size: 18px;
+    margin: 0;
+}
+
+.image-description {
+    font-size: 14px;
+    margin: 0;
+}
+
+.upload-item {
+    position:absolute;
+    top: 150px; /* Adjust the top position for spacing */
+    right: 330px; /* Adjust the right position for spacing */
+}
+
+.upload-link {
+    text-decoration: none;
+    color: #fff;
+}
+
+.upload-button {
+    background-color: #0074cc; /* Customize the button background color */
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.upload-button span {
+    font-weight: bold;
+}

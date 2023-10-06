@@ -1,0 +1,2 @@
+2023-08-24 23:40:14.297 EDT [22203] FATAL:  data directory "/Users/mukeshpabbathi/Desktop/postgre sql db" has invalid permissions
+2023-08-24 23:40:14.297 EDT [22203] DETAIL:  Permissions should be u=rwx (0700) or u=rwx,g=rx (0750).
