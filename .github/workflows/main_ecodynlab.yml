@@ -31,7 +31,8 @@ jobs:
       - name: Create and activate Conda environment
         run: |
           conda env create -f environment.yml
-          source activate SERVIR_AppTemplate  # Activate Conda environment using script
+          source ~/.bashrc  # Ensure the bashrc is sourced again
+          conda activate SERVIR_AppTemplate
 
       
 
