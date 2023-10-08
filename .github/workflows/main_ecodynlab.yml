@@ -28,11 +28,18 @@ jobs:
       #- name: Initialize Conda
         #run: conda init bash  # Initialize Conda for bash shell
           
-      - name: Create and activate Conda environment
+      - name: Set up Miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          miniconda-version: "latest"
+          activate-environment: SERVIR_AppTemplate
+
+      - name: Run Conda Commands (PowerShell Core)
+        shell: pwsh
         run: |
-          conda env create -f environment.yml
-          source ~/.bashrc  # Ensure the bashrc is sourced again
-          conda activate SERVIR_AppTemplate
+          conda info
+          conda list
+          conda env list
 
       
 
