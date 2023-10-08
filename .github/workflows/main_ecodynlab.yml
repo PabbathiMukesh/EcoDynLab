@@ -27,8 +27,8 @@ jobs:
           
       - name: Create and activate Conda environment
         run: |
-          conda create -n SERVIR_AppTemplate python=3.9
-          conda install -n SERVIR_AppTemplate -c conda-forge -y --file requirements.txt
+          conda env create -f environment.yml
+          conda activate SERVIR_AppTemplate
       
 
       
