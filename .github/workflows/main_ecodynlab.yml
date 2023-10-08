@@ -46,7 +46,9 @@ jobs:
       
       - name: Install dependencies
         run: |
-          conda install -c conda-forge -r requirements.txt
+          # Assuming you have a setup.py file, you can use pip to install Python dependencies
+          pip install .
+          shell: bash
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
