@@ -24,11 +24,13 @@ jobs:
           export PATH="$HOME/miniconda/bin:$PATH"
           conda init bash
           source ~/.bashrc
-
+          
       - name: Create and activate Conda environment
         run: |
           conda create -n SERVIR_AppTemplate python=3.9
-          conda activate SERVIR_AppTemplate
+          conda install -n SERVIR_AppTemplate -c conda-forge -y --file requirements.txt
+      
+
       
       - name: Install dependencies
         run: |
