@@ -25,13 +25,14 @@ jobs:
           conda init bash
           source ~/.bashrc
           
-      - name: Initialize Conda
-        run: conda init bash  # Initialize Conda for bash shell
+      #- name: Initialize Conda
+        #run: conda init bash  # Initialize Conda for bash shell
           
       - name: Create and activate Conda environment
         run: |
           conda env create -f environment.yml
-          conda activate SERVIR_AppTemplate
+          source activate SERVIR_AppTemplate  # Activate Conda environment using script
+
       
 
       
