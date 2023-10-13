@@ -15,49 +15,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Install Miniconda
+      - name: Set up Python version
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Set up Anaconda environment
         run: |
-          wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+          wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh -O miniconda.sh
           bash miniconda.sh -b -p $HOME/miniconda
           export PATH="$HOME/miniconda/bin:$PATH"
-          conda init bash
-          source ~/.bashrc
-          
-      #- name: Initialize Conda
-        #run: conda init bash  # Initialize Conda for bash shell
-          
-      - name: Set up Miniconda
-        uses: conda-incubator/setup-miniconda@v2
-        with:
-          miniconda-version: "latest"
-          activate-environment: SERVIR_AppTemplate
+          conda install -c anaconda conda=4.10.3
+          conda env create -f environment.yml
+          conda activate SERVIR_AppTemplate
 
-      - name: Run Conda Commands (PowerShell Core)
-        shell: pwsh
-        run: |
-          conda info
-          conda list
-          conda env list
-
-      
-
-      
-      - name: Install dependencies
-        run: |
-          # Assuming you have a setup.py file, you can use pip to install Python dependencies
-          pip install .
-          shell: bash
-        
-      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
-      
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
         with:
           name: python-app
           path: |
-            . 
+            .
             !venv/
 
   deploy:
@@ -73,7 +53,7 @@ jobs:
         with:
           name: python-app
           path: .
-          
+
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
