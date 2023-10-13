@@ -30,6 +30,7 @@ jobs:
           export PATH="$HOME/miniconda/bin:$PATH"
           conda install -c anaconda conda=4.10.3
           conda env create -f environment.yml
+          source $HOME/miniconda/etc/profile.d/conda.sh
           conda activate SERVIR_AppTemplate
 
       - name: Upload artifact for deployment jobs
