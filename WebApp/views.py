@@ -5,7 +5,7 @@ from sqlite3 import IntegrityError
 import traceback
 
 from django.contrib import messages
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.templatetags.static import static
 from django.urls import reverse
 from django.utils.safestring import mark_safe
@@ -186,6 +186,11 @@ def people(request):
     team_members = People.objects.all().order_by('title__titleorder')
     return render(request, 'WebApp/people.html', {'team_members': team_members})
 
+def person_detail(request, member_id):
+    person = get_object_or_404(People, pk=member_id)  # Assuming your People model has a primary key 'id'
+    return render(request, 'WebApp/person_detail.html', {'person': person})
+
+
 def projects(request):
     projects = Project.objects.all()
 
@@ -280,7 +285,7 @@ def paper_index(request):
 
 @api_view(['GET'])
 def paper_list_view(request, *args, **kwargs):
-	queryset = Paper.objects.all()
+	queryset = Paper.objects.all().order_by('-year')
 	serializer = PaperSerializer(queryset, many=True)
 	print(len(queryset))
 	return Response(serializer.data, status=200)

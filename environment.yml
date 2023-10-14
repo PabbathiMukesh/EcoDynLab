@@ -11,6 +11,7 @@ dependencies:
   - shapely
   - earthengine-api
   - beautifulsoup4
+  - whitenoise
   - pip
   - pip:
       - climateserv==0.0.24

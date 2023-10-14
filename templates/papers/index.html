@@ -1,4 +1,6 @@
 {% extends "WebApp/app_base.html" %}
+{% load static %}
+{% block title %}EcoDynLab - Papers{% endblock %}
 
 {% block content %}
 <style>
@@ -58,12 +60,19 @@ function loadPapers(papersElement) {
 }
 	
 function formatPaperElement(paper) {
+	debugger
 	paper.issue = paper.issue == null ? "" : paper.issue
 	paper.volume = paper.volume == null ? "None" : paper.volume
-	paper.DOI = paper.DOI == null ? '#' : paper.DOI
-
-	var formattedPaper = "<div class='col-12 col-md-12 mx-auto py-2 mb-2 paper' id='paper - " + paper.id + "'><li>" + paper.authors + " (" + paper.year + ") \"" + paper.title + "\", <i>" + paper.journal + "</i>, " + paper.volume + " " + paper.issue + ": " + paper.pages + ". <a href=" + paper.DOI + " target='_blank'>DOI</a></li></div>"
+	paper.DOI = paper.DOI == "" ? null : paper.DOI
 	
+	
+	var formattedPaper = "<div class='col-12 col-md-12 mx-auto py-2 mb-2 paper' id='paper - " + paper.id + "'><li>" + paper.authors + " (" + paper.year + ") \"" + paper.title + "\", <i>" + paper.journal + "</i>, " + paper.volume + " " + paper.issue + ": " + paper.pages;
+	
+	if (paper.DOI) {
+	    formattedPaper += ". <a href='" + paper.DOI + "' target='_blank'>DOI</a>";
+	}
+	
+	formattedPaper += "</li></div>";
 	return formattedPaper
 }
 

@@ -1,6 +1,6 @@
 {% extends "WebApp/app_base.html" %}
 {% load static %}
-{% block title %}SERVIR AppTemplate - About{% endblock %}
+{% block title %}EcoDynLab - People{% endblock %}
 {% block script %}
     <!-- Custom styles-->
     <meta charset="UTF-8">
@@ -49,12 +49,14 @@
         
         <ul class="team-members">
             {% for member in team_members %}
-            <li class="person">
-                <img src="{% static 'images/teammembers/Person1.png' %}" alt="{{ member.name }}" style="padding: 0;">
-                <div class="person-details" style="padding: 20px;">
-                    <h2>{{ member.name }}</h2>
-                    <p>{{ member.title }}</p>
-                </div>
+            <li class="person" data-id="{{ member.id }}">
+                <a href="{% url 'person_detail' member.id %}">
+                    <img src="{% static 'images/teammembers/Person1.png' %}" alt="{{ member.name }}" style="padding: 0;">
+                    <div class="person-details" style="padding: 20px;">
+                        <h2>{{ member.name }}</h2>
+                        <p>{{ member.title }}</p>
+                    </div>
+                </a>  
             </li>
             {% if forloop.counter|divisibleby:6 %}
                 </ul><ul class="team-members">

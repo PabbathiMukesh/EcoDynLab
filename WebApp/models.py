@@ -119,6 +119,8 @@ class People(models.Model):
     name = models.CharField(max_length=255)
     title = models.ForeignKey(Title_People, on_delete=models.CASCADE)  # Make sure Title is imported
     image = models.ImageField(upload_to='team_members/')
+    bio = models.TextField() 
+    cv = models.FileField(upload_to='cv_files/')
 
     def __str__(self):
         return self.name

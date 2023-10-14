@@ -1,0 +1,71 @@
+<!-- WebApp/person_detail.html -->
+{% extends "WebApp/app_base.html" %}
+{% load static %}
+{% block title %}EcoDynLab - {{ person.name }}{% endblock %}
+{% block script %}
+    <!-- Custom styles-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!-- Custom scripts-->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <style>
+    .person-detail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 20px;
+    }
+    
+    .person-image img {
+        max-width: 200px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
+    
+    .person-info {
+        text-align: center;
+    }
+    
+    .person-title {
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+    
+    .person-bio {
+        font-size: 1.1em;
+        margin-bottom: 20px;
+    }
+    
+    .cv-link {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    
+    .cv-link:hover {
+        background-color: grey;
+    }
+    
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="person-detail">
+    <div class="person-image">
+        <img src="{% static 'images/teammembers/Person1.png' %}" alt="{{ person.name }}">
+    </div>
+    <div class="person-info">
+        <h2>{{ person.name }}</h2>
+        <p class="person-title">{{ person.title }}</p>
+        <p class="person-bio">{{ person.bio }}</p>
+        <a href="{{ person.cv_link }}" target="_blank" class="cv-link">View CV</a>
+    </div>
+</div>
+{% endblock %}
