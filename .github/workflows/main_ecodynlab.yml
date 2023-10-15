@@ -35,9 +35,9 @@ jobs:
       - run: |
           conda info
           conda list
-
+      - run: conda install -c anaconda django
+      - run: python -c "import sys; print(sys.path)"
       
-
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
         with:
