@@ -1,93 +1,185 @@
-aiohttp @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_690hlorvpy/croot/aiohttp_1670009554132/work
-aiosignal @ file:///tmp/build/80754af9/aiosignal_1637843061372/work
-asgiref @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_edg6nzjrx0/croots/recipe/asgiref_1661287549316/work
-async-timeout @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_732x52axrd/croots/recipe/async-timeout_1664876366763/work
-attrs @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_33k1uces4n/croot/attrs_1668696162258/work
-beautifulsoup4 @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_bczxn9gqkq/croot/beautifulsoup4-split_1681493044307/work
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: osx-64
+abseil-cpp==20211102.0
+aiohttp==3.8.3
+aiosignal==1.2.0
+asgiref==3.5.2
+async-timeout==4.0.2
+attrs==22.1.0
+beautifulsoup4==4.12.2
+blas==1.0
 blinker==1.6.2
-Bottleneck @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_29949159-f86f-474b-bc1f-aaa1e0e222b4ofusifik/croots/recipe/bottleneck_1657175564045/work
+blosc==1.21.3
+boost-cpp==1.82.0
+bottleneck==1.3.5
 brotlipy==0.7.0
-cachetools @ file:///tmp/build/80754af9/cachetools_1619597386817/work
-certifi @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_2emnmf1qow/croot/certifi_1690232232440/work/certifi
-cffi @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_1b0qzba5nr/croot/cffi_1670423213150/work
-cftime @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_eatzui_zhs/croot/cftime_1678830375183/work
-charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
+bzip2==1.0.8
+c-ares==1.19.0
+ca-certificates==2023.08.22
+cachetools==4.2.2
+cairo==1.16.0
+certifi==2023.7.22
+cffi==1.15.1
+cfitsio==3.470
+cftime==1.6.2
+charset-normalizer==2.0.4
 click==8.1.7
 climateserv==0.0.24
-cryptography @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_e2pplk40z3/croot/cryptography_1689373680118/work
-defusedxml @ file:///tmp/build/80754af9/defusedxml_1615228127516/work
-diff-match-patch @ file:///Users/ktietz/demo/mc3/conda-bld/diff-match-patch_1630511840874/work
-Django @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_066uop7vqa/croots/recipe/django_1661292540858/work
-django-allauth @ file:///home/conda/feedstock_root/build_artifacts/django-allauth_1695589199515/work
+cryptography==41.0.2
+defusedxml==0.7.1
+diff-match-patch==20200713
+django==4.1
+django-allauth==0.57.0
 django-appconf==1.0.5
 django-extensions==3.2.3
-django-import-export @ file:///home/conda/feedstock_root/build_artifacts/django-import-export_1694712862786/work
+django-import-export==3.3.1
 django-select2==8.1.2
 djangorestframework==3.14.0
-earthengine-api @ file:///home/conda/feedstock_root/build_artifacts/earthengine-api_1696619120255/work
-et-xmlfile==1.1.0
-Flask==3.0.0
-frozenlist @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_5eiq5594pj/croot/frozenlist_1670004516635/work
-GDAL @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_7bpu2_kz5n/croot/gdal-split_1691162695819/work/build/swig/python
+earthengine-api==0.1.374
+et_xmlfile==1.1.0
+expat==2.5.0
+flask==3.0.0
+fontconfig==2.14.1
+freetype==2.10.4
+freexl==1.0.6
+frozenlist==1.3.3
+gdal==3.6.2
 geos==0.2.3
-google-api-core @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_e8k7mq0azh/croots/recipe/google-api-core_1663638632975/work
-google-api-python-client @ file:///home/conda/feedstock_root/build_artifacts/google-api-python-client_1692128288548/work
-google-auth @ file:///opt/conda/conda-bld/google-auth_1646735974934/work
-google-auth-httplib2 @ file:///home/conda/feedstock_root/build_artifacts/google-auth-httplib2_1654134467987/work
-google-cloud-core @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_9d5xj268o3/croot/google-cloud-core_1666887740758/work
-google-cloud-storage @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_84cxl1lm7g/croot/google-cloud-storage_1668469648786/work
-google-crc32c @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_73ck52h9v4/croot/google-crc32c_1667946624016/work
-google-resumable-media @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_3dqrmz_m16/croot/google-resumable-media_1668208101161/work
-googleapis-common-protos @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_9buug7jewo/croots/recipe/googleapis-common-protos-feedstock_1660256163499/work
-grpcio @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_17djx5hwjg/croot/grpc-suite_1685746859125/work
-httplib2 @ file:///home/conda/feedstock_root/build_artifacts/httplib2_1679483503307/work
-idna @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_00jf0h4zbt/croot/idna_1666125573348/work
+geotiff==1.7.0
+gettext==0.21.1
+giflib==5.2.1
+glib==2.69.1
+google-api-core==2.10.1
+google-api-python-client==2.97.0
+google-auth==2.6.0
+google-auth-httplib2==0.1.0
+google-cloud-core==2.3.2
+google-cloud-storage==2.6.0
+google-crc32c==1.5.0
+google-resumable-media==2.4.0
+googleapis-common-protos==1.56.4
+grpc-cpp==1.48.2
+grpcio==1.48.2
+gunicorn==21.2.0
+hdf4==4.2.13
+hdf5==1.12.1
+httplib2==0.22.0
+icu==73.2
+idna==3.4
 importlib-metadata==6.8.0
+intel-openmp==2023.1.0
 itsdangerous==2.1.2
-Jinja2==3.1.2
+jinja2==3.1.2
+jpeg==9e
+json-c==0.16
+kealib==1.5.0
+krb5==1.20.1
+lcms2==2.15
+lerc==3.0
+libboost==1.82.0
+libcrc32c==1.1.2
+libcurl==8.1.1
+libcxx==14.0.6
+libdeflate==1.17
+libedit==3.1.20221030
+libev==4.33
+libexpat==2.5.0
+libffi==3.4.4
+libgdal==3.6.2
+libgfortran==5.0.0==11_3_0_hecd8cb5_28
+libgfortran5==11.3.0
+libiconv==1.17
+libkml==1.3.0
+libnetcdf==4.8.1
+libnghttp2==1.52.0
+libpng==1.6.39
+libpq==12.15
+libprotobuf==3.20.3
+libspatialite==4.3.0a
+libssh2==1.10.0
+libtiff==4.5.1
+libwebp-base==1.3.2
+libxml2==2.10.4
+libzip==1.8.0
+llvm-openmp==14.0.6
 lxml==4.9.3
-MarkupPy==1.14
-MarkupSafe==2.1.3
-mkl-fft==1.3.6
-mkl-random @ file:///Users/ec2-user/mkl/mkl_random_1682994911338/work
+lz4-c==1.9.4
+markuppy==1.14
+markupsafe==2.1.3
+mkl==2023.1.0
 mkl-service==2.4.0
-multidict @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_81upqwhecp/croot/multidict_1665674236996/work
-netCDF4 @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_45tuxgni29/croot/netcdf4_1673455473200/work
-numexpr @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_1b50c1js9s/croot/numexpr_1683227065029/work
-numpy @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_2ajpp3regc/croot/numpy_and_numpy_base_1691164374110/work
-oauthlib @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_0fpzkx7s0h/croot/oauthlib_1679489634313/work
+mkl_fft==1.3.6
+mkl_random==1.2.2
+multidict==6.0.2
+ncurses==6.4
+netcdf4==1.6.2
+nspr==4.35
+nss==3.89.1
+numexpr==2.8.4
+numpy==1.25.2
+numpy-base==1.25.2
+oauthlib==3.2.2
 odfpy==1.4.1
+openjpeg==2.4.0
 openpyxl==3.0.10
-pandas @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_dflcdcqtvf/croot/pandas_1692297394605/work
-Pillow==10.0.1
+openssl==3.0.11
+packaging==23.2
+pandas==2.0.3
+pcre==8.45
+pcre2==10.42
+pillow==10.0.1
+pip==23.2.1
+pixman==0.40.0
+poppler==22.12.0
+poppler-data==0.4.12
+postgresql==12.15
+proj==6.2.1
 protobuf==3.20.3
 psycopg2==2.9.7
 psycopg2-binary==2.9.7
-pyasn1 @ file:///Users/ktietz/demo/mc3/conda-bld/pyasn1_1629708007385/work
+pyasn1==0.4.8
 pyasn1-modules==0.2.8
-pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
-PyJWT @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_eec47dd9-fcc8-4e06-bbca-6138d11dbbcch6zasfc4/croots/recipe/pyjwt_1657544589510/work
-pyOpenSSL @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_7fwdg30481/croot/pyopenssl_1690223429070/work
-pyparsing @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_3a17y2delq/croots/recipe/pyparsing_1661452538853/work
-PySocks @ file:///opt/concourse/worker/volumes/live/112288ac-9cb0-4e73-768b-13baf4ca6419/volume/pysocks_1605305820043/work
-python-dateutil @ file:///tmp/build/80754af9/python-dateutil_1626374649649/work
-python3-openid @ file:///tmp/build/80754af9/python3-openid_1614366121783/work
-pytz @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_ddzpsmm2_f/croot/pytz_1671697430473/work
-PyYAML @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_79xo15pf1i/croot/pyyaml_1670514753622/work
-requests @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_fa2zrx4csg/croot/requests_1690400223595/work
+pycparser==2.21
+pyjwt==2.4.0
+pyopenssl==23.2.0
+pyparsing==3.0.9
+pysocks==1.7.1
+python==3.9.18
+python-dateutil==2.8.2
+python-tzdata==2023.3
+python3-openid==3.2.0
+pytz==2022.7
+pyyaml==6.0
+qhull==2020.2
+re2==2022.04.01
+readline==8.2
+requests==2.31.0
 requests-oauthlib==1.3.0
-rsa @ file:///tmp/build/80754af9/rsa_1614366226499/work
-shapely @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_73st2w3xix/croot/shapely_1680636308240/work
-six @ file:///tmp/build/80754af9/six_1644875935023/work
-soupsieve @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_a42j8ggi70/croot/soupsieve_1680518482618/work
-sqlparse @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_cb77ukgrpu/croot/sqlparse_1690901947630/work
-tablib @ file:///home/conda/feedstock_root/build_artifacts/tablib_1686577010149/work
-tabulate @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_a6553360-8167-4574-96ae-f76ab756a64bn2vcri8q/croots/recipe/tabulate_1657784111302/work
-tzdata @ file:///croot/python-tzdata_1690578112552/work
-uritemplate @ file:///home/conda/feedstock_root/build_artifacts/uritemplate_1634152692041/work
-urllib3 @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_1968zekhce/croot/urllib3_1686163172153/work
-Werkzeug==3.0.0
-xlrd @ file:///croot/xlrd_1685030938141/work
+rsa==4.7.2
+setuptools==68.0.0
+shapely==2.0.1
+six==1.16.0
+soupsieve==2.4
+sqlite==3.41.2
+sqlparse==0.4.4
+tablib==3.5.0
+tabulate==0.8.10
+tbb==2021.8.0
+tiledb==2.3.3
+tk==8.6.12
+tzdata==2023c
+uriparser==0.9.7
+uritemplate==4.1.1
+urllib3==1.26.16
+werkzeug==3.0.0
+wheel==0.38.4
+xerces-c==3.2.4
+xlrd==2.0.1
 xlwt==1.3.0
-yarl @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_d8a27nidjc/croots/recipe/yarl_1661437080982/work
+xz==5.4.2
+yaml==0.2.5
+yarl==1.8.1
 zipp==3.17.0
+zlib==1.2.13
+zstd==1.5.5
