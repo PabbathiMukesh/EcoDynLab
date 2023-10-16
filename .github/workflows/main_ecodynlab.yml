@@ -45,7 +45,7 @@ jobs:
           
       - name: Install dependencies
         run: |
-          conda install -c conda-forge -r requirements.txt
+          conda install -c conda-forge --file requirements.txt
       
 
       
