@@ -41,9 +41,21 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y python3-gdal
+          sudo apt-get install -y libgdal-dev
+
+        shell: bash
+        
+      - name: Set GDAL Environment Variables
+        run: |
+          export CPLUS_INCLUDE_PATH=/usr/include/gdal
+          export C_INCLUDE_PATH=/usr/include/gdal
+        shell: bash
+        
+      - name: Install GDAL Python Binding
+        run: |
           pip install django GDAL
         shell: bash
-      
+
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
         with:
