@@ -38,7 +38,7 @@ jobs:
       - run: conda install -c anaconda django
       - run: python -c "import sys; print(sys.path)"
       - name: Install GDAL
-      - run: |
+        run: |
           sudo apt-get update
           sudo apt-get install -y libgdal-dev
 
