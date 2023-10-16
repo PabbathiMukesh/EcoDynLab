@@ -27,11 +27,6 @@ jobs:
         run: |
           pip install django
           
-      - name: Install GDAL Python Package
-        run: |
-          pip install numpy
-          CFLAGS="-Wno-deprecated-declarations" pip install --upgrade GDAL == 3.7.2
-          
       - uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: SERVIR_AppTemplate
@@ -47,7 +42,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libgdal-dev
           sudo apt-get install -y python3-dev
-
+          
+      - name: Install dependencies
+        run: |
+          conda install -c conda-forge -r requirements.txt
       
 
       
