@@ -32,6 +32,7 @@ jobs:
           conda env create -f environment.yml
           source $HOME/miniconda/etc/profile.d/conda.sh
           conda activate SERVIR_AppTemplate
+          pip install gdal
           
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
