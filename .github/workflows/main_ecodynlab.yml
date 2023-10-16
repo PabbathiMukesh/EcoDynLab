@@ -46,7 +46,7 @@ jobs:
       - name: Install GDAL Python Package
         run: |
           pip install numpy
-          pip install --upgrade GDAL
+          CFLAGS="-Wno-deprecated-declarations" pip install --upgrade GDAL = 3.7.2
 
       
       - name: Upload artifact for deployment jobs
