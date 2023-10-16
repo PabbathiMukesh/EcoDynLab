@@ -23,44 +23,16 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Install Django
+      - name: Set up Anaconda environment
         run: |
-          wget http://download.osgeo.org/gdal/3.7.2/gdal-3.7.2.tar.gz
-          tar xzvf gdal-3.7.2.tar.gz
-          cd gdal-3.7.2
-          ./configure
-          make 
-          make install
-          
-      - uses: conda-incubator/setup-miniconda@v2
-        with:
-          activate-environment: SERVIR_AppTemplate
-          environment-file: environment.yml
-          auto-activate-base: false
-      - run: |
-          conda info
-          conda list
-      - run: conda install -c anaconda django
-      - run: python -c "import sys; print(sys.path)"
-      - name: Install GDAL
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y python3-gdal
-          sudo apt-get install -y libgdal-dev
-
-        shell: bash
-        
-      - name: Set GDAL Environment Variables
-        run: |
-          export CPLUS_INCLUDE_PATH=/usr/include/gdal
-          export C_INCLUDE_PATH=/usr/include/gdal
-        shell: bash
-        
-      - name: Install GDAL Python Binding
-        run: |
-          pip install django GDAL
-        shell: bash
-
+          wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh -O miniconda.sh
+          bash miniconda.sh -b -p $HOME/miniconda
+          export PATH="$HOME/miniconda/bin:$PATH"
+          conda install -c anaconda conda=4.10.3
+          conda env create -f environment.yml
+          source $HOME/miniconda/etc/profile.d/conda.sh
+          conda activate SERVIR_AppTemplate
+          pip install gdal
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
         with:
@@ -68,7 +40,6 @@ jobs:
           path: |
             .
             !venv/
-
   deploy:
     runs-on: ubuntu-latest
     needs: build
