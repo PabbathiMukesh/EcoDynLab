@@ -37,6 +37,11 @@ jobs:
           conda list
       - run: conda install -c anaconda django
       - run: python -c "import sys; print(sys.path)"
+      - name: Install GDAL
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y libgdal-dev
+
       
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
