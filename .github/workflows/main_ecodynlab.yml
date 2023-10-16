@@ -25,7 +25,12 @@ jobs:
 
       - name: Install Django
         run: |
-          pip install django
+          wget http://download.osgeo.org/gdal/X.Y.Z/gdal-X.Y.Z.tar.gz
+          tar xzvf gdal-X.Y.Z.tar.gz
+          cd gdal-X.Y.Z
+          ./configure
+          make 
+          make install
           
       - uses: conda-incubator/setup-miniconda@v2
         with:
