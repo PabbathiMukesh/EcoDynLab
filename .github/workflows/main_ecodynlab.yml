@@ -25,9 +25,9 @@ jobs:
 
       - name: Install Django
         run: |
-          wget http://download.osgeo.org/gdal/X.Y.Z/gdal-X.Y.Z.tar.gz
-          tar xzvf gdal-X.Y.Z.tar.gz
-          cd gdal-X.Y.Z
+          wget http://download.osgeo.org/gdal/3.7.2/gdal-3.7.2.tar.gz
+          tar xzvf gdal-3.7.2.tar.gz
+          cd gdal-3.7.2
           ./configure
           make 
           make install
