@@ -41,10 +41,11 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libgdal-dev
+          sudo apt-get install -y python3-dev
 
       - name: Install GDAL Python Package
         run: |
-          CFLAGS="-Wno-deprecated-declarations" pip install GDAL
+          CFLAGS="-Wno-deprecated-declarations" pip install --upgrade GDAL
 
       
       - name: Upload artifact for deployment jobs
