@@ -187,7 +187,7 @@ STATIC_ROOT = os.path.join(str(BASE_DIR), 'staticfiles')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-#GDAL_LIBRARY_PATH = '/opt/homebrew/Cellar/gdal/3.7.2_1/lib/libgdal.33.3.7.2.dylib'
+GDAL_LIBRARY_PATH = '/opt/homebrew/Cellar/gdal/3.7.2_1/lib/libgdal.33.3.7.2.dylib'
 # GDAL_LIBRARY_PATH = '/opt/homebrew/Cellar/gdal/3.7.2_1/lib/libgdal.dylib'
 # GEOS_LIBRARY_PATH ='/opt/homebrew/Cellar/geos/3.12.0/lib/libgeos_c.dylib'
 
