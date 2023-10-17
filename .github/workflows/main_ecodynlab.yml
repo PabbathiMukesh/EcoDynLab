@@ -36,11 +36,11 @@ jobs:
         #  sudo apt-get update
         #  sudo apt-get install libgdal-dev
 
-      - name: Set GDAL Configuration
-        run: |
-          export CPLUS_INCLUDE_PATH=/usr/include/gdal
-          export C_INCLUDE_PATH=/usr/include/gdal
-        shell: bash
+      #- name: Set GDAL Configuration
+      #  run: |
+       #   export CPLUS_INCLUDE_PATH=/usr/include/gdal
+        #  export C_INCLUDE_PATH=/usr/include/gdal
+        #shell: bash
         
       - name: Install Python Dependencies
         run: |
