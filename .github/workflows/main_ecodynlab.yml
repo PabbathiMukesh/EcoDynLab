@@ -45,16 +45,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y python3-gdal  # Install system GDAL packages
 
-      - name: Build and install GDAL
-        run: |
-           wget https://download.osgeo.org/gdal/3.7.2/gdal-3.7.2.tar.gz
-           tar xzf gdal-3.7.2.tar.gz
-           cd gdal-3.7.2
-           ./configure
-           make
-           sudo make install
-           gdalinfo --version
-
 
       - name: Verify GDAL installation
         run: |
