@@ -39,10 +39,23 @@ jobs:
           sudo apt install gdal-bin python3-gdal
       #sudo apt-get install -y libgdal-dev
       #sudo apt-get install -y python3-dev
-          
-      - name: Install Python Dependencies
+
+      - name: Install system dependencies
         run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-gdal  # Install system GDAL packages
+
+      - name: Install GDAL from Wheel
+        run: |
+          wget https://sourceforge.net/projects/gdal-wheels-for-linux/files/GDAL-3.1.4-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.whl/download -O GDAL-3.1.4-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.whl
           pip install GDAL-3.1.4-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.whl
+
+      - name: Verify GDAL installation
+        run: |
+          python -c "import osgeo.ogr"
+          
+      - name: Install requirements.txt
+        run: |
           pip install -r requirements.txt
         #conda install -c conda-forge gdal
       
