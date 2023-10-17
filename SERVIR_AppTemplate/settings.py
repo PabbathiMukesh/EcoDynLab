@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import json
 import os
-from osgeo import gdal
 
 from pathlib import Path
 
