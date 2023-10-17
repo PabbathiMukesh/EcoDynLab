@@ -45,7 +45,7 @@ jobs:
         shell: bash
         
       - name: Install Python Dependencies
-        run: pip install -r requirements.txt
+        run: CFLAGS="-Wno-deprecated-declarations" pip install -r requirements.txt
 
 
           
