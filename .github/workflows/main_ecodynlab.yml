@@ -45,7 +45,9 @@ jobs:
         shell: bash
         
       - name: Install Python Dependencies
-        run: CFLAGS="-Wno-deprecated-declarations" pip install -r requirements.txt
+        run: |
+          conda install -c conda-forge gdal
+          CFLAGS="-Wno-deprecated-declarations" pip install -r requirements.txt
 
 
           
