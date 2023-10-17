@@ -47,7 +47,8 @@ jobs:
 
       - name: Install GDAL from Wheel
         run: |
-          pip install gdal
+          pip install --upgrade setuptools wheel
+          pip install GDAL==3.2.0
 
 
       - name: Verify GDAL installation
