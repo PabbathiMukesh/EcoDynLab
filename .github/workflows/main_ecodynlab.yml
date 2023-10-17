@@ -23,15 +23,13 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Set up Anaconda environment
-        run: |
-          wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh -O miniconda.sh
-          bash miniconda.sh -b -p $HOME/miniconda
-          export PATH="$HOME/miniconda/bin:$PATH"
-          conda install -c anaconda conda=4.10.3
-          conda env create -f environment.yml
-          source $HOME/miniconda/etc/profile.d/conda.sh
-          conda activate SERVIR_AppTemplate
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: SERVIR_AppTemplate
+          environment-file: environment.yml
+          auto-activate-base: false
+
+      
         
       - name: Install gdal Dependencies
         run: | 
