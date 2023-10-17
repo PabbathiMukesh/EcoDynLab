@@ -47,8 +47,8 @@ jobs:
 
       - name: Install GDAL from Wheel
         run: |
-          wget https://sourceforge.net/projects/gdal-wheels-for-linux/files/GDAL-3.1.4-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.whl/download -O GDAL-3.1.4-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.whl
-          pip install GDAL-3.1.4-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.whl
+          pip install --no-binary :all: gdal
+
 
       - name: Verify GDAL installation
         run: |
