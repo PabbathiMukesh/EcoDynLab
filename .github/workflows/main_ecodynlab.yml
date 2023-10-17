@@ -31,10 +31,10 @@ jobs:
 
       
         
-      - name: Install gdal Dependencies
-        run: | 
-          sudo apt-get update
-          sudo apt-get install libgdal-dev
+      #- name: Install gdal Dependencies
+       # run: | 
+        #  sudo apt-get update
+        #  sudo apt-get install libgdal-dev
 
       - name: Set GDAL Configuration
         run: |
@@ -45,7 +45,7 @@ jobs:
       - name: Install Python Dependencies
         run: |
           conda install -c conda-forge gdal
-          CFLAGS="-Wno-deprecated-declarations" pip install -r requirements.txt
+          pip install -r requirements.txt
 
 
           
