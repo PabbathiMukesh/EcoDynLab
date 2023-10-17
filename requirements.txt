@@ -28,7 +28,7 @@ earthengine-api
 et-xmlfile==1.1.0
 Flask==3.0.0
 frozenlist
-
+gdal==3.7.2
 geos==0.2.3
 google-api-core
 google-api-python-client
