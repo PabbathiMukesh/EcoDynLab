@@ -27,7 +27,8 @@ jobs:
         shell: bash
         run: |
           conda env create -f environment.yml
-          source activate SERVIR_AppTemplate
+          conda info --envs
+          source conda activate SERVIR_AppTemplate
           
       #- uses: conda-incubator/setup-miniconda@v2
         #with:
