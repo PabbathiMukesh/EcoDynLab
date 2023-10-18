@@ -45,6 +45,7 @@ jobs:
         run: |
           brew update
           brew install gdal
+          gdal-config --version
       #sudo apt-get install -y python3-dev
 
 
