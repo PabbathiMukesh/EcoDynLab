@@ -28,7 +28,7 @@ jobs:
           conda env create -f environment.yml
           conda info --envs
           conda init bash
-          source /usr/local/miniconda/bin/activate SERVIR_AppTemplate
+          source /usr/share/miniconda/bin/activate SERVIR_AppTemplate
 
       - name: Install dependencies
         run: pip install -r requirements.txt
