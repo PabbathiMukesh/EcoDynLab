@@ -22,17 +22,23 @@ jobs:
       - name: Install Django
         run: |
           pip install django
+
+      - name: Set up Conda
+        shell: bash
+        run: |
+          conda env create -f environment.yml
+          source activate SERVIR_AppTemplate
           
-      - uses: conda-incubator/setup-miniconda@v2
-        with:
-          activate-environment: SERVIR_AppTemplate
-          environment-file: environment.yml
-          auto-activate-base: false
-      - run: |
-          conda info
-          conda list
-      - run: conda install -c anaconda django
-      - run: python -c "import sys; print(sys.path)"
+      #- uses: conda-incubator/setup-miniconda@v2
+        #with:
+          #activate-environment: SERVIR_AppTemplate
+          #environment-file: environment.yml
+          #auto-activate-base: false
+      #- run: |
+          #conda info
+          #conda list
+      #- run: conda install -c anaconda django
+      #- run: python -c "import sys; print(sys.path)"
       - name: Install GDAL
         run: |
           brew update
