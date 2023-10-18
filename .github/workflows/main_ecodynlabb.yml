@@ -22,10 +22,13 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Create and start virtual environment
+      - name: Set up Conda
+        shell: bash
         run: |
-          python -m venv venv
-          source venv/bin/activate
+          conda env create -f environment.yml
+          conda info --envs
+          conda init bash
+          source /usr/local/miniconda/bin/activate SERVIR_AppTemplate
 
       - name: Install dependencies
         run: pip install -r requirements.txt
