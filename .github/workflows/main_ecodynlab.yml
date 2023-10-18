@@ -45,7 +45,7 @@ jobs:
         run: |
           brew update
           brew install gdal
-          apt-get update -y && apt-get upgrade -y && apt-get install -y --no-install-recommends binutils libproj-dev gdal-bin libgdal-dev python3-gdal
+          brew install binutils proj gdal python-gdal
       #sudo apt-get install -y python3-dev
 
 
